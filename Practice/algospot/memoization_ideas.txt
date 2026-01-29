@@ -1,0 +1,21 @@
+Case 1: Order doesn’t matter, no duplicates
+	State: (visited_set, last) or (visited_set)	
+
+Case 3: Order doesn’t matter, duplicates allowed
+	Canonical DP trick: impose artificial order
+	State size: O(n * target)
+	This is one of the most DP-friendly categories.
+
+Case 2: Order matters, no duplicates
+	Many “order matters” problems look like permutations, but actually only depend on:
+		- last element
+		- visited set
+		- some aggregate info
+
+	Example: Traveling Salesman
+		- Order matters in the path
+		- But future only depends on (visited_set, last_city)
+
+Case 4: Order matters, duplicates allowed
+	Question 1:
+		- Does the exact sequence matter, or only some aggregate properties?

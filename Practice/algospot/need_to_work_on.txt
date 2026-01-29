@@ -1,0 +1,61 @@
+jlis.py -> How to find jlis; greedy approach doesn't work -> (v)
+
+quantize.py -> Doesn't using average minimize standard error? Why output values differ from answer, solve without itertools? More efficient way? (v)
+
+tiling.py -> How to find recurrence relation -> (v)
+
+asymtiling -> Solve after working on tiling -> (v)
+
+-------
+
+numb3rs.py -> Check correctness of algorithm -> (v)
+
+packing.py -> why solutions 1 & 2 don't work
+
+morse.py -> Why parameter k-1 instead of k has to be passed at the top call of solve_morse()
+
+-------
+
+dragon.py -> Keep working on the solutions
+
+zimbabwe.py -> What my solution differs from optimal solution; how to further improve -> (v)
+
+(tictactoe.py -> Remark: Thorough backtracking)
+
+numbergame.py -> How to prune? -> Solved by memoization (v)
+
+game problems; assume both parties try their best...; how to implement? -> get max, (v)
+
+blockgame.py -> Memoization, yet still too slow, (remark: thorough backtracking important here too) (v, check book) -> (v, book's solution impelmented)
+
+(sushi.py) -> Maximum recursion depth exceed error - algorithm probably okay; python issue
+
+-------
+
+strjoin.py -> General way to find optimal solution -> Keep working on -> priority queue, (v)
+
+-------
+
+boardcover2.py -> My solution works, but takes too long; how to optimize? (v, check book) -> (v, my sol(book sol for blockgame.py) works)
+
+-------
+
+kakuro2.py -> Why my code doesn't terminate; how to optimize
+
+-------
+
+canadatrip.py -> How to do decision and optimize?
+
+-------
+
+Bisection method -> How to find accurate answer instead of approximates? Whether to return lo, hi, or mid when finding min/max,
+Why do we return hi when finding minimum; cant we return lo or mid? -> Return which variable gets modified by invariant
+
+fossil.py -> Continue implementing
+
+pass486.py -> Way to improve performance?
+
+pinball.py -> Continue implementing
+
+
+

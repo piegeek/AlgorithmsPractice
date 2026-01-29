@@ -1,1 +1,4 @@
 laboratory.py -> My solution works, but how to optimize it so it runs in 2 seconds?
+
+robotcleaner.py -> Counting and manipulating room logic mixed up; elegant way to solve?
+

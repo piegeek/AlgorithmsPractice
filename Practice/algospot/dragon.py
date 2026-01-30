@@ -8,7 +8,11 @@ def dragon():
 
 def solve_dragon(n, p, l):
 	# Brute force - takes too long for large inputs; e.g.: n = 42
-	# nth_gen_str = get_nth_gen_str(n)
+	nth_gen_str = get_nth_gen_str(n)
+
+	# Comment out - for debugging purposes
+	for i in range(3, 7):
+		print(f'ith_gen: {get_nth_gen_str(i)}')
 
 	# return nth_gen_str[p-1:p-1+l]
 
@@ -26,21 +30,21 @@ def solve_dragon(n, p, l):
 	# else: return ''.join(str_stack)
 
 	# Optimized brute force approach: Still too slow
-	g_n = 'FX'
-	gen = 0
-	while len(g_n) <= p + l and gen < n:
-		g_n = generate_dragon(g_n)
-		# print(len(g_n))
-		# print(p)
-		gen += 1
+	# g_n = 'FX'
+	# gen = 0
+	# while len(g_n) <= p + l and gen < n:
+	# 	g_n = generate_dragon(g_n)
+	# 	# print(len(g_n))
+	# 	# print(p)
+	# 	gen += 1
 
-	if gen == n:
-		return g_n[p-1:p-1+l]
+	# if gen == n:
+	# 	return g_n[p-1:p-1+l]
 
-	for generation in range(gen, n):
-		g_n = generate_dragon(g_n[:p])
+	# for generation in range(gen, n):
+	# 	g_n = generate_dragon(g_n[:p])
 
-	return g_n[p-1:p-1+l]
+	# return g_n[p-1:p-1+l]
 
 	
 def generate_dragon(string):

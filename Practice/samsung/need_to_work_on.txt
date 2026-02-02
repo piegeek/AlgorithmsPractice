@@ -3,3 +3,7 @@ laboratory.py -> My solution works, but how to optimize it so it runs in 2 secon
 robotcleaner.py -> Counting and manipulating room logic mixed up; elegant way to solve? -> Shouldn't separate; 
 if countable at the last minute by just by looking at the final state of the board, then we can separate, if not don't
 
+gearrotation.py -> Keep working on solution -> "Decision phase and mutation phase must be separated"
+
+surveillance.py -> Continue working on
+

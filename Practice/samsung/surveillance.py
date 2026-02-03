@@ -38,7 +38,7 @@ def solve_surveillance(N, M, office, cctvs):
 		# EXCEPT DOWN
 		[ [0, -1], [-1, 0], [0, 1] ],
 		# EXCEPT LEFT
-		[ [-1, 0], [0, 1], [-1, 0] ],
+		[ [-1, 0], [0, 1], [1, 0] ],
 		# EXCEPT UP
 		[ [0, 1], [1, 0], [0, -1] ],
 		# EXCEPT RIGHT
@@ -79,7 +79,7 @@ def dfs(idx, office, cctvs, directions):
 				if office[r+dy][c+dx] in range(1, 6):
 					pass
 				else:
-					office[r+dy][c+dx] = 9
+					office[r+dy][c+dx] += 9
 				r += dy
 				c += dx
 
@@ -98,9 +98,11 @@ def dfs(idx, office, cctvs, directions):
 				if office[r+dy][c+dx] in range(1, 6):
 					pass
 				else:
-					office[r+dy][c+dx] = 0
+					# office[r+dy][c+dx] undoes result of higher branch too. Should be changed like the bottom
+					office[r+dy][c+dx] -= 9
 				r += dy
 				c += dx
+
 
 	return ret
 

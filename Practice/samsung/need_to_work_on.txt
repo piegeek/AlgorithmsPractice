@@ -5,5 +5,9 @@ if countable at the last minute by just by looking at the final state of the boa
 
 gearrotation.py -> Keep working on solution -> "Decision phase and mutation phase must be separated"
 
-surveillance.py -> Continue working on
+surveillance.py -> Continue working on -> (v)
+
+dragoncurve.py -> Computational geometry; Matrix for rotating 90 degs?
+
+cubing.py -> Continue solving with help of gpt; gpt solution still wrong
 

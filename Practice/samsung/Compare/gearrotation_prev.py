@@ -21,10 +21,10 @@ def solve_gearrotation(gears, rotations):
 			else:
 				polarity[i] = False
 
-		# if direction == 1:
-		# 	gears[idx] = gears[idx][1:] + [gears[idx][0]]
-		# elif direction == -1:
-		# 	gears[idx] = [gears[idx][-1]] + gears[idx][0:-1]
+		if direction == 1:
+			gears[idx] = gears[idx][1:] + [gears[idx][0]]
+		elif direction == -1:
+			gears[idx] = [gears[idx][-1]] + gears[idx][0:-1]
 
 		dfs(idx, direction, visited, polarity, gears)
 
@@ -43,34 +43,29 @@ def dfs(idx, direction, visited, polarity, gears):
 
 	visited[idx] = True
 
-	if direction == 1:
-		gears[idx] = [gears[idx][-1]] + gears[idx][0:-1]
-	elif direction == -1:
-		gears[idx] = gears[idx][1:] + [gears[idx][0]]
-	
 	if all_visited(visited):
 		return
 
 	neighbors = get_neighbors(idx, visited)
 
 	for neighbor in neighbors:
-		# didnt_move = False
+		didnt_move = False
 
 		polarity_idx = min(idx, neighbor)
 
-		# if direction == 1:
-		# 	if polarity[polarity_idx] == False:
-		# 		gears[neighbor] = [gears[neighbor][-1]] + gears[neighbor][0:-1]
-		# 	else:
-		# 		didnt_move = True
-		# elif direction == -1:
-		# 	if polarity[polarity_idx] == False:
-		# 		gears[neighbor] = gears[neighbor][1:] + [gears[neighbor][0]]
-		# 	else:
-		# 		didnt_move = True
+		if direction == 1:
+			if polarity[polarity_idx] == False:
+				gears[neighbor] = [gears[neighbor][-1]] + gears[neighbor][0:-1]
+			else:
+				didnt_move = True
+		elif direction == -1:
+			if polarity[polarity_idx] == False:
+				gears[neighbor] = gears[neighbor][1:] + [gears[neighbor][0]]
+			else:
+				didnt_move = True
 
-		# if didnt_move:
-		# 	continue
+		if didnt_move:
+			continue
 
 		new_direction = (-1) * direction
 		
@@ -80,8 +75,7 @@ def dfs(idx, direction, visited, polarity, gears):
 		# else:
 		# 	polarity[neighbor] = (gears[idx][6] == gears[neighbor][2])
 
-		if polarity[polarity_idx] == False:
-			dfs(neighbor, new_direction, visited, polarity, gears)
+		dfs(neighbor, new_direction, visited, polarity, gears)
 
 	# visited[idx] = False
 

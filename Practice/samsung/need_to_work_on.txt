@@ -12,3 +12,5 @@ dragoncurve.py -> Computational geometry; Matrix for rotating 90 degs?
 cubing.py -> Continue solving with help of gpt; gpt solution still wrong
 
 laboratory3.py -> Remark: Generating combinations (Force ordering)
+
+newgame2.py -> Problem comprehension (Check what the problematic input differs from other inputs), typo; How to improve?

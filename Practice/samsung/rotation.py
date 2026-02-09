@@ -1,5 +1,6 @@
 import sys
 
+# Propagation -> dfs required; seems like samsung favors dfs, bfs problems; should consider
 def rotation():
     N, M, T, disks, operations = parse_input()
     solve_rotation(N, M, T, disks, operations)

@@ -1,0 +1,44 @@
+🧠 6. Other Simulation Patterns You Should Know
+🔹 1. Two Pointers
+Keywords:
+sorted array
+pairs
+sliding window
+subarray
+
+Used for:
+longest substring
+sum constraints
+interval merging
+
+🔹 2. Event Sorting (Line Sweep)
+Keywords:
+intervals
+overlapping
+maximum simultaneous
+
+🔹 3. Priority Queue Simulation
+Keywords:
+always choose smallest/largest
+real-time scheduling   <===== Use heaps ("which one?")
+merging sorted streams
+
+🔹 4. Difference Array / Prefix Sum
+If time range is small.
+
+Instead of sorting:
+mark start++
+mark end--
+prefix sum
+
+🔹 5. Disjoint Set (Union-Find)
+Keywords:
+merging groups		<======= Important
+connectivity		<======= Important
+dynamic grouping
+
+🔹 6. Segment Tree / Fenwick Tree
+Keywords:
+range updates
+dynamic queries
+interval queries

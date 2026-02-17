@@ -1,0 +1,20 @@
+Q.
+Is there a way to solve this by dfs + dp instead of using a queue?
+
+Specifications: ""
+
+A.
+🚨 Why DFS + DP Is Fundamentally Wrong Here
+This problem is:
+Not a shortest-path over small state space
+Not interval DP
+Not subset DP
+Not bitmask DP
+
+Trying DFS+DP would essentially attempt to enumerate all possible full binary trees with N leaves.
+Number of full binary trees with N leaves = Catalan(N−1)
+≈4^N/N^(3/2)
+Still exponential.
+
+
+	​

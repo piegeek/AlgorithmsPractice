@@ -1,0 +1,31 @@
+❌ Problem 1: DFS for Shortest Path
+
+This is not how shortest path problems should be solved.
+
+❌ Problem 2: No Memoization on (i, j, shoe_used)
+
+The true state space is:
+(m * n * 2)
+But your DFS explores exponentially many paths instead of only those states once.
+
+🟢 The Correct Approach: BFS with State
+Each state is:
+(row, col, shoe_used)
+
+Total possible states:
+m * n * 2
+
+🚀 Why BFS Is Perfect Here
+Each move costs 1
+We want minimum steps
+BFS guarantees shortest path
+
+🎯 Final Advice
+
+Whenever you see:
+Grid
+Minimum time
+All moves cost same
+One extra state (like key, wall break, power)
+Think immediately:
+🔥 "This is BFS with state."

@@ -1,0 +1,52 @@
+This problem is the classical scheduling problem. Previously I thought this problem
+could be solved by using a greedy method on it. Can you solve this problem that way?
+Also tell me when line sweeping algorithms like my implementation are useful and the 
+keyword I should spot to say that this simulation is a line sweeping algorithm. Also
+if there are other methods I should know for simulation problems let me know. 
+
+My code: ""
+
+Specifications: ""
+
+A.
+🧠 5. Alternative Greedy Solution (Min-Heap Method)
+Another classical greedy solution:
+
+1. Sort intervals by start time.
+2. Use a min-heap of ending times. <===== Similar to sorting
+
+For each interval:
+
+If earliest ending ≤ current start → reuse room
+Else → allocate new room
+
+Example structure:
+import heapq
+
+intervals.sort()
+
+heap = []
+
+for s, t in intervals:
+    if heap and heap[0] <= s:
+        heapq.heappop(heap)
+    heapq.heappush(heap, t)
+
+print(len(heap))
+
+[My Interpretation]
+So the idea is should I use line sweep (cafeexpansion.py) or heap (operatingsystem.py)?
+Line sweep useful when overlapping intervals
+Q. When is using a heap useful over line sweep?
+
+🧩 Mental Model
+Use Line Sweep when:
+This is counting. ("How many?")
+
+Use Heap when:
+This is allocation. ("Which one?")
+
+📌 Another Way to See It
+Line sweep = mathematical solution
+Heap = simulation solution
+

@@ -1,0 +1,40 @@
+Q.
+Here I felt like dividing the problem into events were not as clear as before. I've 
+set events as 1. Menu completed, 2. Customer arrived and menu queue is not empty, and
+3. Customer arrived and menu queue is empty. I originally tried nesting 3 into 2 
+(Customer arrived) and split cases where either menu queue is empty or not. But in 
+doint so, event was not clearly detected by just checking invariants on the state.
+Instead the state had to be checked (not just the invariant), so I felt like that
+should be made into a seperate event so I divided them out, but now there is
+redundant code for events 2 & 3. What's a clear way to go about this problem and how
+should I effectively detect events?
+
+My code: ""
+
+Specifications: ""
+
+A.
+🔎 The Core Design Principle
+1️⃣ Events should be external time-triggered facts
+
+In this problem, there are only two real events:
+Customer arrives
+Current menu finishes
+
+That’s it.
+
+“Queue empty” is not an event.
+It’s a state predicate used to determine what happens after an event.
+
+🎯 Clean Event Structure
+Instead of:
+Event 2: customer arrives and queue not empty
+Event 3: customer arrives and queue empty
+
+You should structure it like this:
+Event: customer arrives
+    -> update state
+    -> evaluate state to decide whether to start cooking <====== Evaluate state; doesn't have to be just invariant
+	; always evaluate invariant, evaluate state if needed
+
+

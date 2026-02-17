@@ -1,0 +1,63 @@
+Q.
+I feel like this problem should be solved with dp. But looking at the input range,
+1 <= N <= 1000, 1 <= d <= 1000 and 1 <= w <= 100, this problem seems like it 
+should be solved using a greedy method. However I can't think of a correct way
+to solve this. How to solve this problem and 
+What is a general approach to greedy methods on which variable I 
+should choose greedily
+
+Specifications: ""
+
+A.
+🎯 General Greedy Selection Rule ==> [Constraint & Optimization, Input size, Update state
+then adjust it to fit constraint (invariant), when is vice versa okay -> When state update
+depends on constraint]
+
+When designing greedy, ask:
+1️⃣ What [constraint] limits selection?
+Here → number of days
+
+2️⃣ What do we want to [maximize]?
+→ total score
+
+3️⃣ When conflict happens, what should we discard?
+→ the least valuable task
+
+So the greedy variable is:
+
+Keep highest weights, discard smallest when over capacity
+
+Q.
+Okay I've followed your suggestion and implemented it as you've said. 
+But in my code there are two areas i've highlighted by adding comments. 
+If I place heappush at "correct here" the code works fine, but if I put it 
+under "wrong here" it gives me inaccurate results. 
+This seems like a timing issue and I've seen this pattern often in simulation problems.
+What a general rule of thumb to increment or decrement states and the like? 
+
+My code: ""
+
+A.
+What you're noticing is not just a timing issue — it's about maintaining an invariant.
+At iteration i, you want:
+Invariant:
+heap contains the best feasible set of assignments among the first i tasks.
+
+🔥 The Deep Rule (Very Important)
+When maintaining constraints in greedy/simulation:
+[Always apply the state transition first, then restore invariants.]
+
+In other words:
+1. Apply decision
+2. Fix constraint violations
+
+🧩 When Is The Reverse Order Correct?
+Only when: 
+The condition does not depend on the new state
+Or you are checking preconditions before transition
+
+Example: 
+if energy <= 0:
+    stop
+move()
+Here checking first is correct because move requires energy.

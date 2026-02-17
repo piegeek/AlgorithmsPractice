@@ -1,0 +1,181 @@
+Good. This confusion is actually a modeling mistake, not a coding mistake.
+
+Your code is complicated because you chose the wrong abstraction.
+
+🧠 The Correct Mental Model
+
+This is a Finite State Machine evolving over discrete time.
+
+State variables:
+current_health
+consecutive_success_time
+
+Events:
+1. Attack at time t
+2. Normal second passes
+
+At each second:
+
+Case 1: Attack happens
+No heal
+Health decreases
+consecutive = 0
+
+Case 2: No attack
+Heal x
+consecutive += 1
+If consecutive == bandage_time:
+Heal bonus y
+consecutive = 0 (because skill ends and restarts)
+
+That's it.
+
+No intervals.
+No future prediction.
+No merging.
+
+Just state evolution.
+
+🧩 What Category Is This Problem?
+
+This is:
+🟣 Category: State Machine Simulation (Time-Driven)
+
+Characteristics:
+State depends on previous second
+Effects depend on consecutive success
+Cannot precompute independent intervals
+Small time constraints (attacks max time manageable)
+
+It is NOT:
+Sweep line
+Scheduling
+Queue
+Pure event merging
+
+🧱 STATE MACHINE TEMPLATE
+state = initial_state
+attack_idx = 0
+
+for time in range(1, last_attack_time + 1):
+
+    if attack happens now:
+        apply damage
+        reset consecutive
+    else:
+        apply per-second effect
+        increase consecutive
+        if consecutive == threshold:
+            apply bonus
+            reset consecutive
+
+    if dead:
+        return -1
+
+[🏆 The Big Takeaway]
+You over-engineered because you assumed:
+“All simulation problems should be event merged.”
+
+That is not true.
+
+Simulation problems split into two types:
+| Type                      | Example         | Solve Method           |
+| ------------------------- | --------------- | ---------------------- |
+| Independent Events        | Cafe problem    | Event-driven           |
+| State-dependent evolution | Bandage problem | Per-time state machine |
+
+🚀 How To Decide Which Model To Use
+Ask:
+Can future effects be determined without knowing current state?
+
+If YES → Event-based possible
+If NO → Must simulate state over time
+
+Bandage problem = NO.
+
+Rule of thumb:
+
+If future depends on history → simulate state
+If future is predetermined by timestamps → event driven
+
+🅐 EVENT-DRIVEN SIMULATION
+Technique:
+Precompute event times
+Sort events
+Process in order
+
+🅑 TIME-STEP STATE MACHINE
+Technique:
+Iterate time from 1 → last_time
+Update state per second
+Apply event if happens
+Maintain state variables
+
+🅒 SWEEP LINE / INTERVAL COUNTING (overlapping intervals)
+Technique:
+Convert to (time, +1/-1)
+Sort
+Accumulate
+
+[🏆 The Deep Lesson]
+
+In state-machine problems:
+
+Always separate:
+
+1️⃣ State progression (timers, counters)
+2️⃣ Effect application
+3️⃣ Output clamping
+
+Never nest state logic inside effect logic.
+
+1️⃣ What “Never Nest State Logic Inside Effect Logic” Actually Means
+Don’t mix state transitions with state interpretation rules in the same branch.
+
+3️⃣ What Would Be Wrong?
+if attack:
+    curr_health -= damage	 <=== State transition
+    if curr_health < 0:      <=== State interpretation (evaluation)
+        return -1
+    if heal_count == bandage[0]:
+        ...
+
+Now you're mixing:
+
+Attack resolution
+Death logic
+Healing logic
+Combo logic
+
+inside the same branch.
+
+That’s when it becomes messy.
+
+Event handling
++ Output decision
++ State rule enforcement
+
+4️⃣ Clean Mental Separation
+🟢 1. Event Detection
+What happened at time t?
+attack?
+or
+no attack?
+
+🟢 2. State Transition
+How does state change?
+health -= damage
+heal_count = 0
+
+🟢 3. State Evaluation
+Is something finished?
+if health <= 0:
+    return -1
+
+The rule:
+Don’t mix 2 and 3 deeply inside each other.
+State mutation is fine.
+State evaluation should be centralized
+
+My Interpretation:
+Centralize state evaluations and dont put it in the same branch as state transition logic

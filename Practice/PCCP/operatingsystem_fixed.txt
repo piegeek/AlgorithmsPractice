@@ -1,0 +1,37 @@
+Q.
+Previously in a different chat you've mentioned that when solving simulation problems,
+state evaluation and state transition logic shouldn't be deeply nested in each other.
+However event handling is okay. But what if events should be checked by checking a 
+state invariant? For example in my code, whether a process should be taken out of
+the run_queue is determined by checking (curr_duration < runtime). In other words,
+checking for events and checking an invariant on a state get mixed up. In such cases
+is it okay to mix the few a little if its not too complicated or should I avoid such
+practices completely? If so how should I write time step state transition simulation
+code in general? Even if this problem can be solved without simulating each second
+that's how i chose to go about it so you don't need to suggest a different methodology
+for this problem.
+
+My code: ""
+
+A.
+3️⃣ The clean time-step simulation template
+while simulation_running:
+
+    # A. Detect
+    events = detect_events(state)
+
+    # B. Transition
+    apply(events, state)
+
+    # C. Advance time
+    advance_time(state)
+
+7️⃣ Clean mental model for time-step simulations
+
+Whenever you write one, think in this exact order:
+What events can happen at this time?
+What priority order should they be processed?
+After all events are resolved, what advances automatically with time?
+
+If you answer those explicitly in code blocks, your simulation becomes stable.
+

@@ -1,0 +1,82 @@
+Q.
+Okay so I'm trying to simulate the number of times the alarm rang but I'm having
+problems with just modeling a given timestamp into a clock position. Converting time units
+to degrees on the clock is complicated becuase it involves ratios and modular calculations.
+Give me a mental model to deal with what value I should multiply or add and what value to
+do a modular expression on and etc. Then I tried determining when two lines meet based
+on a mathematic formula f(k-1) * f(k+1) < 0 then overlapped -> But this is not robust 
+since the input can be between [k-1, k+1] thus making this method invalid. What is a better
+way to determine whether two pointers have intersected? And give me what type of problem this is
+whether its 1. Event based simulation, 2. Time step state machine, or 3. Line swee and give 
+me a general way to solve these types of problems and a clear mental model.
+
+My code: ""
+
+Specifications of the problem: ""
+
+
+A. => Solution on iPad
+🔎 First: What Type of Problem Is This?
+This is:
+🔵 Event-Based Simulation (Continuous Time)
++
+🟡 Relative Motion / Periodic Function Problem
+
+Nothing meaningful happens between intersection events.
+This means:
+👉 You should compute intersection times directly.
+Not simulate per second.
+
+🚨 Why Your Method Is Not Robust
+This is a classic problem:
+Sampling continuous motion with discrete steps is unreliable.
+
+📌 Final Classification Summary
+| Problem       | Type                                      |
+| ------------- | ----------------------------------------- |
+| Cafe queue    | Event-based discrete                      |
+| Bandage       | Time-step state machine                   |
+| Clock overlap | Continuous relative-motion event counting |
+
+Q. Since it's a continuous time motion and can be reduced to a math problem, is there 
+a way to solve this by using the bisection method?
+
+A.
+🧠 1️⃣ When Is Bisection Appropriate?
+Bisection is for solving:
+f(t)=0
+
+🧠 2️⃣ What Is Our Equation Here?
+t=360k​ / 5.9
+No root finding needed.
+
+🧠 4️⃣ The Core Insight
+This is not a "root finding" problem.
+It is a:
+🔵 Periodic event counting problem
+Where events occur at regular intervals:
+t_k​=kP
+
+🧮 5️⃣ When Would Bisection Make Sense?
+If the motion was:
+
+Nonlinear speed
+Acceleration involved
+Piecewise velocity
+Unknown analytical solution
+
+Example:
+If angular speed depended on time:
+ω(t)=6+sin⁡(t)
+
+Then yes — bisection might be appropriate.
+But here speeds are constant.
+So equation is linear.
+
+[🏆 Final Answer]
+Yes, you can use bisection.
+
+But that would be like:
+Using Newton’s method to solve 2x = 10.
+Technically possible.
+Conceptually wrong.

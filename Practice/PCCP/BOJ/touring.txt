@@ -1,0 +1,20 @@
+My code results in time exceeded issue. If I try resolving the issue by memoization
+the size of the state space is still O(2^n * d) and since n <= 10000 and d <= 10000 
+this still seems to be too slow perhaps. Tell me how to improve it. Also is there a 
+way to memoize "visited" variable without using bitmask?
+
+My code: ""
+
+Specifications: ""
+
+A.
+🔥 This Is Actually a Greedy Scheduling Problem
+This is the classic "강연 스케줄링" (Lecture Scheduling) problem.
+
+3️⃣ Why Greedy Works (Deeper Intuition)
+So at every step, the only thing that matters is:
+Among all jobs considered so far, keep the best d of them.
+
+[My Interpretation]
+Look at the input size; the output specifications say that this is a dp problem
+but if the input size seems to be too large think of greedy method

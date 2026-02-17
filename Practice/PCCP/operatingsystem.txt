@@ -1,0 +1,22 @@
+Q. I've tried solving this problem with two methods. First I tried event based simulation
+where i had to specify the events and states. The events were relatively clear while 
+coming up with relevant states were hard in comparison. I was confused whether I should
+include the output state as a state we manage during the simulation. The second method
+I've tried is that I've noticed this problem reduces to sorting processes according
+to their arrival time and priority(score). However even in this approach finding the 
+answer was pretty difficult. Tell me a general way of solving this and these types
+of problems.
+
+My code: ""
+
+Specifications: ""
+
+A. 
+🧠 4️⃣ The Core Insight You Were Missing
+You asked:
+Should output state be part of simulation state?
+Answer:
+❌ No.
+Output is a byproduct.
+Never treat output as simulation state.
+

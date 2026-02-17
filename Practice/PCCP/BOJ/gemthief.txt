@@ -1,0 +1,20 @@
+Q.
+This is my greedy implementation of the following problem. I've submitted and got
+a time exceeded result. What's a way to improve the performance? I think the
+double for loop causes 300000 * 300000 ~= 10^13 so it's getting a timeout
+
+My code: ""
+
+Specifications: ""
+
+A.
+🧠 Mental Shift
+Instead of matching:
+for jewel:
+    find bag
+
+Always ask:
+for container:
+    choose best available item
+
+This inversion is the trick.

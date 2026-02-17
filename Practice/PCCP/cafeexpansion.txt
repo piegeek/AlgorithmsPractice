@@ -1,0 +1,190 @@
+[Simulation Problems]
+
+Let’s build a general framework you can reuse.
+
+✅ PART 1 — General Way to Solve These Problems
+Most simulation problems can be solved using this decision flow:
+
+🔎 Step 1 — Is Time Continuous or Event-Based?
+Ask:
+Do I really need to simulate every second?
+
+If events only happen at specific times (arrival, finish, rotation, collision, etc.),
+then you should use:
+	✅ Event-Driven Simulation
+	NOT per-second brute force simulation.
+
+🔎 Step 2 — Identify “State” and “Events”
+Every simulation problem has:
+
+1️⃣ State
+What changes over time?
+
+Examples:
+Queue
+Machine status
+Position of objects
+Resource usage
+Active intervals
+
+2️⃣ Events
+What causes state changes?
+
+Examples:
+Customer arrival
+Service completion
+Rotation
+Collision
+Expiration
+
+🔎 Step 3 — Choose One of 3 Core Patterns
+There are three major simulation templates:
+
+🟢 CATEGORY 1 — Step-by-Step (Time Tick) Simulation
+You simulate:
+for t in range(...):
+    update everything
+
+Use this when:
+
+Time constraints small
+State changes every unit time
+No way to jump to next event
+
+Example Problems:
+Cellular automata
+Grid spreading (virus, fire)
+Game boards
+Physics-like step simulation
+
+🔵 CATEGORY 2 — Event-Driven Simulation ⭐ (Most Important)
+Instead of iterating every second, you jump from event to event.
+
+You:
+Compute when next event happens
+Jump directly to that time
+Update state
+
+This is MUCH faster and cleaner.
+
+Template:
+events = []
+
+# Add events (time, type, data)
+
+events.sort()
+
+for event in events:
+    process(event)
+
+Your Cafe Problem Is THIS TYPE
+
+Why?
+Customers arrive at known times: i * k
+Drinks finish at computed times
+Nothing changes in between
+So simulating each second is unnecessary.
+
+This problem is:
+✅ Deterministic, Single-Server, Queueing Event Simulation
+
+🔴 CATEGORY 3 — Interval / Sweep Line Simulation
+When problem becomes:
+"How many things overlap at a time?"
+You convert into intervals:
+[start, end)
+Then solve using:
+Sweep line
+
+Template:
+events = []
+
+for each interval:
+    events.append((start, +1))
+    events.append((end, -1))
+
+events.sort(key=lambda x: (x[0], x[1]))
+
+cur = 0
+max_val = 0
+
+for _, val in events:
+    cur += val
+    max_val = max(max_val, cur)
+
+✅ Your Cafe Problem Falls Into:
+
+🔵 Event-Driven Simulation
+AND
+🔴 Interval Overlap / Sweep Line
+
+It is actually both.
+
+[🎯 General Reusable Solution Framework]
+
+For problems like:
+
+(event) -> change state
+
+Queue with processing
+Server with jobs
+Machines handling tasks
+People entering/leaving
+Resource usage over time
+
+Use this pattern:
+Step 1 — Compute Arrival Times
+arrival[i]
+
+Step 2 — Compute Finish Times
+start[i] = max(arrival[i], finish[i-1])
+finish[i] = start[i] + duration
+
+Step 3 — Convert to Intervals
+[arrival[i], finish[i])
+
+Step 4 — Sweep Line to Count Overlap
+This gives maximum simultaneous entities.
+
+[🏷 Categories of Simulation Problems]
+Here’s a full classification you can memorize:
+
+🟢 1. Grid Simulation
+BFS spreading
+Fire, virus, melting ice
+Movement on board
+Example: BOJ fire problem
+
+🔵 2. Queue / Service Simulation (Your Problem)
+Single server
+Multiple server
+Priority queue scheduling
+Bank/cafe problems
+
+🟡 3. Discrete Event Simulation
+Collisions
+Task scheduling
+Time-based events
+Process management
+
+🔴 4. Interval / Sweep Line Problems
+Overlapping meetings
+Maximum concurrent users
+Traffic analysis
+CPU usage tracking
+
+🟣 5. State Machine Simulation
+Robot movement
+Direction + memory
+DFS + mutation
+Gear rotation problems (like your previous one)
+
+🏆 Key Skill to Develop
+
+Stop thinking:
+“Simulate every second”
+
+Start thinking:
+“What are the discrete events?”
+
+That shift alone will level up your simulation ability dramatically.

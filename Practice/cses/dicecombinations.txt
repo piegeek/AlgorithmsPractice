@@ -1,0 +1,9 @@
+Q. 
+My code is producing time exceeded for large inputs n (n >= 10^6). Show me how to improve it
+
+My code:
+
+Specifications:
+
+A.
+Should be solved with iterative dp

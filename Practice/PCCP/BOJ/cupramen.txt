@@ -1,0 +1,123 @@
+Q.
+Find what the issue in my code is for the following specification.
+
+My code: ""
+
+Specifications: ""
+
+A.
+Invariant: You can only solve d problems before deadline d.
+
+Thus,
+For each problem:
+Push its ramen into heap.
+If heap size > deadline → pop smallest ramen.
+
+Q.
+I decided to do this becuase in general, a greedy solution is a special case of a 
+dp solution. So considering the whole state tree structure of a dp solution, 
+at each level we greedily choose the next child (this is a greedy solution). 
+Why doesn't this work and what's the difference with your implementation? 
+Also give me a mental model of choosing a greedy solution deriving from a dp solution.
+
+A.
+7️⃣ Why Greedy Is NOT Just “Pick One DP Child”
+This idea is subtly wrong.
+
+Greedy ≠ choose one branch of DP tree.
+
+Greedy =
+
+[The DP’s optimal substructure collapses to maintaining
+a monotonic invariant.]
+
+Q.
+But doing so would generate all permutations of possible answers so shouldn't it 
+contain the optimal answer? Why is this an incorrect dp formulation?
+
+A.
+2️⃣ It’s Not a Valid DP — It Has No State Compression
+Dynamic programming requires:
+
+Different paths must merge into the same state.
+
+That is the whole point of DP.
+
+=======================================
+
+Once you pick a subset of jobs,
+you can always schedule them in deadline order.
+
+So:
+
+The order decision is fake complexity.
+
+Your DP modeled order.
+The real problem is subset selection.
+
+[My interpretation]
+As long as jobs are selected within a certain deadline, multiple orders can be compressed
+into one.
+
+Q.
+But doesn't this make the time complexity O(t * 2^n), not O(n!)?
+
+A.
+Yes, the number of distinct states is O(t · 2^n).
+
+9️⃣ Mental Model Upgrade
+
+🔹 Is order actually relevant?
+If you can reorder chosen tasks arbitrarily → it’s subset selection.
+
+Q.
+So if in a dp problem if the order of parents of a dp state tree can be reordered, 
+is it a decision problem and not an exploration problem like you mentioned earlier 
+in another chat? Does that mean we have can't use for loops when generating a dp 
+solution? That seems counterintuitive to the problmes i've solved in the past. 
+In the 0/1 knapsack problem i understand that using a for loop is not correct but 
+can problems with state space size O(n * 2^n) be collapsed into not using a for loop 
+or am I missing something here?
+
+A.
+1️⃣ “If order can be reordered, is it a decision problem?”
+No.
+It just means:
+Order is not part of the minimal sufficient state.
+That’s all.
+
+2️⃣ Exploration vs Decision (What I Meant Earlier)
+Decision-type (Greedy-collapsible) problem
+
+The structure is so rigid that:
+At each prefix,
+Only one structural summary matters.
+
+Q.
+This part is hard to understand. What does the structure being rigid mean? 
+Also use recursive dp(dp with memoizations) instead of iterative dp. 
+Give me a mental model of how to determine if the structure is so rigid that it
+becomes a decision type dp problem
+
+Q.
+Then I feel like the knapsack problem can also be solved with exploration. 
+Give me a exploration dp knapsack solution with parameters (visited, W)
+
+A.
+Transition:
+For each item i not in mask:
+    if weight[i] ≤ W:
+        try taking it
+
+This is exactly the same structural pattern as TSP.
+
+Q.
+So previously you've said to impose artificial order on problems where order doesn't 
+matter and duplicates are allowed. Now are you saying that I should try to impose
+artificial order to see if an exploration problem can be compressed into a decision
+problem? Then what's the golden rule of when to try imposing an artificial order?
+
+A.
+3️⃣ The Golden Rule (Clean Version)
+Rule 1 — The solution is a subset, not a sequence.
+This removes permutation explosion.

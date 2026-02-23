@@ -1,0 +1,10 @@
+Q.
+Tell me why my code gets TLE. I've used cache[(amount, last_index)] so the state size
+should be O(n) * O(x) <= 10^8 which is feasible in memoized recursive dp. For example,
+even INPUT: "1 1000000
+1" gives me TLE
+
+My Code: ""
+
+Specifications: ""
+

@@ -1,0 +1,15 @@
+Q.
+I get TLE for this code (n >= 100). How to optimize it? Can we do it without using 
+path_sum and
+using memoization for recursive dp? I feel like I have to generate every combination
+for k = 1 to n which is basically close to 2^n which means all subsets must be 
+considered and the time complexity for this becomes O(2^n) (iterate through all sums) *
+O(2^n) (state space size; number of subsets).
+
+My code: ""
+
+Specifications: ""
+
+A.
+Iterate over sums and check whether if that sum is reachable with dp
+=> O(n * max_sum)

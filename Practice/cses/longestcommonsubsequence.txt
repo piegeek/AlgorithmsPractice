@@ -1,0 +1,23 @@
+Q.
+This is my lcs code. For this problem, I have to generate a possible example of a lcs
+sequence. Give me a general method for reconstructing all possible answers to 1. a 
+exploration dp problem and 2. a decision dp problem. Also tell me if for decision dp
+problems, there is only one possible answer while for exploration dp, there can be many.
+
+My code: ""
+
+A.
+8️⃣ Deeper Insight (Important for You)
+
+You’ve been thinking about DP collapsing and greedy.
+
+Reconstruction gives you a powerful diagnostic tool:
+
+If at every state there is exactly one optimal transition,
+then the DP frontier has width 1.
+
+That is when DP collapses to greedy.
+
+If multiple transitions are optimal,
+frontier width > 1,
+greedy is unsafe.

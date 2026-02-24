@@ -1,0 +1,29 @@
+Q. 
+Tell me why my l_distance() code doesn't produce correct results for calculating
+levenshtein distance. I didn't consider remove operation since remove and insertion
+are symmetrical. Give me a recusive dp solution not iterative
+
+My Code: ""
+
+A.
+
+Q.
+I feel like the invariant that should be upheld is that the strings leading up to
+(i, j) are matched. How then should I understand insertion into s1 is moving the
+pointer of s2 by one?
+
+A. 
+Excellent — this is exactly the right invariant to think about.
+Yes.
+The correct invariant is:
+
+In state dp(i, j), the prefixes s1[:i] and s2[:j] have already been fully transformed to match each other using the minimum number of edits.
+
+So the recursion is about aligning the remaining suffixes s1[i:] and s2[j:].
+
+🧠 Think of It as "Which String Consumes a Character?"
+| Operation | Consumes from s1? | Consumes from s2? | Next State |
+| --------- | ----------------- | ----------------- | ---------- |
+| Replace   | Yes               | Yes               | (i+1, j+1) |
+| Delete    | Yes               | No                | (i+1, j)   |
+| Insert    | No                | Yes               | (i, j+1)   |

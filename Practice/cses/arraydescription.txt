@@ -1,0 +1,6 @@
+Q.
+I felt like for this problem backtracking wasn't necessary but thinking about it
+it seems like backtracking should be done since we have to revert action when all
+the paths of a previous decision was explored. Additionally, I get TLE for this 
+problem. I feel like this is the only correct way to solve this problem. Can you
+improve this further?

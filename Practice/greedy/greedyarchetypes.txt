@@ -1,0 +1,133 @@
+Q.
+Out of the five following greedy archetypes, what does this problem fall into?
+
+🧩 The 5 Common Greedy Archetypes
+Almost all greedy problems fall into these:
+
+1️⃣ Activity Selection Type (Optimization by sorting, [intervals]) -> Interval sorting and exchange
+Key: earliest finish time
+Reason: leaves maximum room for future
+
+2️⃣ Resource Allocation Type (Marginal gain, [weighted optimization])
+Key: best marginal gain per cost
+Example: fractional knapsack
+
+3️⃣ Gap Cutting Type ([Gap] selection)
+Key: pick largest/smallest adjacent gaps
+Example: Kindergarten
+[General Template for Gap-Type Problems]
+1. Sort
+2. Reduce cost to:
+	- Sum of adjacent differences
+	- Or sum of block maxima
+3. Greedily remove or group largest contributions
+
+4️⃣ Merge Smallest First
+Key: combine smallest elements first
+Example: Huffman coding
+
+5️⃣ Stay Ahead Strategy (Prefix correctness invariant)
+Key: keep partial solution always better than optimal’s prefix
+Example: interval scheduling
+
+[May use heap to store prefix]
+
+My Code: ""
+
+Specifications: ""
+
+[atm.py]
+🏆 Archetype: 2️⃣ Resource Allocation Type
+Why?
+You are minimizing total weighted cost by pairing:
+smallest values
+with largest multipliers
+
+[bulbandswitches.py]
+🏆 Archetype: 5️⃣ Stay Ahead Strategy (closest match)
+
+But more precisely:
+Greedy with forced local repair to maintain prefix correctness.
+
+- invariant -
+You ensure that after processing position i,
+the prefix [0 … i-1] is correct and will never change again.
+
+[classroomallocation.py]
+Archetype 1 - Obvious
+
+[delivery.py]
+🏆 Answer: 1️⃣ Activity Selection Type
+(With capacity constraint extension)
+
+[garden.py]
+🏆 1️⃣ Activity Selection Type
+(Interval covering / minimum interval cover variant)
+
+[kindergarten.py]
+🏆 3️⃣ Gap Cutting Type
+Total Cost = heights[N−1]−heights[0]=i=1∑N−1​(heights[i]−heights[i−1])
+
+The Greedy Key
+
+Choose the largest K−1 adjacent gaps and cut there.
+That is literally:
+
+🏆 Pick largest adjacent gaps.
+Exactly archetype 3.
+
+[library.py]
+🏆 Archetype: 3️⃣ Gap Cutting Type
+
+[outletscheduling.py]
+🏆 Archetype: 5️⃣ Stay Ahead Strategy
+This is the classic optimal page replacement (Belady’s algorithm) structure.
+
+The - invariant - is:
+At every step, the greedy choice leaves at least as many future options
+as any optimal solution.
+
+[overlappingsegments.py]
+🏆 Archetype: 5️⃣ Stay Ahead Strategy
+(with prefix heap maintenance)
+
+The - invariant - is:
+The heap always contains exactly the intervals that are currently active.
+
+Why It’s NOT Activity Selection:
+Doesn't have to do with leaving maximum room for the future
+
+[parentheses.py]
+5️⃣ Stay Ahead Strategy (Prefix Invariant Type)
+So the prefix - invariant - is:
+
+Once a - appears, it is always optimal to subtract the entire remaining positive mass.
+
+[scale.py]
+This problem falls into:
+5️⃣ Stay Ahead Strategy (Prefix correctness invariant)
+🧠 Core - Invariant -
+
+At every step:
+
+We can measure all values in [1, reachable].
+This is the crucial prefix invariant.
+
+[stocks.py]
+It falls into:
+5️⃣ Stay Ahead Strategy (Prefix / Suffix Optimal Invariant)
+
+- Invariant -:
+
+At each day i (from right to left),
+max_price_so_far is the maximum future selling price.
+
+So the greedy decision:
+If price[i] < max_future_price → buy
+is always optimal because:
+
+You are matching each buy with the best possible future sell.
+No future decision can improve this match.
+That is exactly a prefix/suffix correctness invariant
+
+

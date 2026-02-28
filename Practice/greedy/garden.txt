@@ -1,0 +1,22 @@
+Q.
+This is the brute force attempt to solve the following problem. Here I tried going
+through all subsets and find the subset that minimizes the output by doing decision
+dp traversals. Here I've found that the feasibility check for "take" is 
+"if flowers[idx][0] <= end" So I've tried deriving a greedy key from it but it's 
+confusing since the feasibility check checks for when we can take a item but in
+our problem our objective is to minimize these takes. How I can I find the greedy 
+key here? Consider that I'm trying to collapse from decision dp.
+
+My code: ""
+
+Specifications: ""
+
+Q.
+Okay, now considering my dp solution, I've tried to come up with reconstruct()
+that finds all the possible answers to the problem. But my reconstruct() returns
+an empty list. Find out what's the issue. I've tried structuring out reconstruct()
+based on your recommendation in a previous chat, but what am I missing here?
+This is my dp() and reconstruct() code.
+
+My code: ""
+

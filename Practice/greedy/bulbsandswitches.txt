@@ -1,0 +1,5 @@
+Q.
+What does this problem have to do with greedy method?
+Shouldn't it be solved with exhaustive search?
+
+Specifications: ""

@@ -1,0 +1,13 @@
+Q.
+Here there is no feasibility check so it's hard to find the greedy key. How should
+I go about this problem?
+
+Specifications: ""
+
+Q.
+Max reachable sum S
+
+if w > S + 1:
+	break
+else:
+	S += w ([1, S] can be reachable by prefix, then [1, S + w] can all be reachable)

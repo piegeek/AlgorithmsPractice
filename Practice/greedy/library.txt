@@ -1,0 +1,25 @@
+Here take got mutated inside if statements so we pass in next_take to function call 
+instead and maintain an intact "take"
+
+Q.
+For this problem I want to track when I have to visit the origin. See my reconstruct()
+code and see if it correctly appends 0 to the path whenever I visit.
+
+My code: ""
+
+Specifications: ""
+
+A.
+In DP you compute cost:
+abs(positions[last] - 0) + abs(0 - positions[i])
+
+Meaning:
+last → 0 → i
+
+So path order should be:
+positions[last] → 0 → positions[i] → ...
+
+But you're appending:
+0 → positions[last]
+
+That is reversed.

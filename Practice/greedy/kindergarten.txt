@@ -1,0 +1,43 @@
+Q.
+This is my dp code for the following problem. Here I do decision dp and check feasibility
+like the following. However deriving the greedy key from feasibility check was not
+straightforward. How should I go about this problem?
+
+My code: ""
+
+Specifications: ""
+
+A.
+The reason deriving the greedy key feels hard from your DP is:
+
+Your feasibility condition is about "how many cuts remain",
+but the cost structure is actually about gaps between adjacent children.
+
+Once you change viewpoint, the greedy key becomes obvious.
+
+Q.
+How to find greedy key?
+
+A.
+🧩 The 5 Common Greedy Archetypes
+Almost all greedy problems fall into these:
+
+1️⃣ Activity Selection Type
+Key: earliest finish time
+Reason: leaves maximum room for future
+
+2️⃣ Resource Allocation Type
+Key: best marginal gain per cost
+Example: fractional knapsack
+
+3️⃣ Gap Cutting Type
+Key: pick largest/smallest adjacent gaps
+Example: Kindergarten
+
+4️⃣ Merge Smallest First
+Key: combine smallest elements first
+Example: Huffman coding
+
+5️⃣ Stay Ahead Strategy
+Key: keep partial solution always better than optimal’s prefix
+Example: interval scheduling

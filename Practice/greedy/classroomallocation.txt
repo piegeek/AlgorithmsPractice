@@ -1,0 +1,16 @@
+Q.
+This is my code that solves this problem with dp. I know that this problem can be solved
+with greedy and I feel like the greedy key can be deduced from feasibility check.
+What should I look for and give me a generalized way of deducing greedy keys from feasibility
+check.
+
+My code: ""
+
+Specifications: ""
+
+A.
+Feasibility depends on a aggregate value
+Future state depends on this feasibility (Why we sort by finish time not start time
+"if next.start_time >= finish_time"
+)
+This aggregate value must have dominance

@@ -1,0 +1,35 @@
+Q.
+In this problem writing the dp solution doesn't require any feasibliity check 
+so it was hard to come up with a greedy key. 
+How should I go about solving greedy problems like this?
+My solution implements dp similar to matrix multiplication dp.
+
+My code: ""
+
+Specifications: ""
+
+A.
+8️⃣ General Strategy for These "Hidden Greedy" Problems
+When there is no feasibility constraint:
+Instead of asking:
+“What is feasible?”
+
+Ask:
+“What structural move most aggressively optimizes the objective?”
+
+[🔥 The Deep Lesson]
+Not all greedy problems come from feasibility checks.
+There are two types:
+
+Type A — Feasibility-based
+Interval scheduling
+Matroid-like
+Greedy maintains a valid structure
+
+Type B — Objective-monotonic
+Fractional knapsack
+This parentheses problem
+You aggressively push objective in one direction
+
+Your brain was searching for feasibility structure.
+But this is a monotonic objective problem.

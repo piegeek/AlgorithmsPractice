@@ -1,0 +1,23 @@
+Q.
+See why my dp solution fails
+
+My code: ""
+
+Specifications: ""
+
+Answer. 
+B: 2 → 3, 40
+C: 4 → 5, 40
+
+C rejected since 3 not in path_start, but B and C do not overlap so x + dp() should
+be considered
+
+In other words, state modeling has failed; my model has imposed a too loose state
+representation
+
+Off by one error example - identify for loops: we have to loop until end + 1!!
+
+Q.
+Find why my greedy solution fails
+
+My code: ""

@@ -21,3 +21,60 @@ That is when DP collapses to greedy.
 If multiple transitions are optimal,
 frontier width > 1,
 greedy is unsafe.
+
+Q.
+Just fix reconstruct while maintaining this structure of comparing solution to 
+optimal solution like this code, even though this code is incorrect currently. 
+
+A.
+[Return just one optimal answer]
+✅ Fixed Version (Preserving Your Exploration Style)
+1. Scan all possible future matches
+2. Pick the first one that satisfies optimality condition
+3. Recurse
+4. Stop
+
+[Return all optimal answers]
+Just remove the return and collect branches separately:
+for suf in suffixes:
+    results.append([a[idx_a]] + suf)
+
+Q.
+Greedy vs DP
+
+A.
+If at any state:
+# of optimal transitions >= 2
+Then greedy can fail. -> This is kind of tricky for decision problems since
+it may seem like the # of optimal transitions is 1; but both branches could
+be optimal for some inputs.
+
+Q. 
+Decision DP -> Greedy (Idea)
+dp(i, cap) = max(
+    value[i] + dp(i+1, cap-weight[i]),
+    dp(i+1, cap)
+) 
+
+value is plus, weight is minus; 
+that is we want to maximize value while minimizing weight -> Idea for greedy key
+
+Is Take >= Skip based only on value or weight? -> No. So this doesn't collapse
+to a greedy problem
+
+Exploration DP -> Greedy (Idea)
+dp(i, time) =
+    max(
+        reward[i] + dp(i+1, time+1) if time < deadline[i],
+        dp(i+1, time)
+    )
+
+reward is plus, time is minus;
+that is we want to maximize reward while minimizing time -> Sort by reward or time
+
+Is T* >= All other T based only on reward or time? -> Yes. So this collapses to
+a greedy problem
+
+This is a mental model I've developed to identify greedy keys. Is there a way
+to decide the correct greedy key; that is if we consider sorting by reward vs 
+sorting by time, what should we choose?

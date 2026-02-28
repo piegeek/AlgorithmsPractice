@@ -1,0 +1,65 @@
+Q. 
+Decision DP -> Greedy (Idea)
+dp(i, cap) = max(
+    value[i] + dp(i+1, cap-weight[i]),
+    dp(i+1, cap)
+) 
+
+value is plus, weight is minus; 
+that is we want to maximize value while minimizing weight -> Idea for greedy key
+
+Is Take >= Skip based only on value or weight? -> No. So this doesn't collapse
+to a greedy problem
+
+Exploration DP -> Greedy (Idea)
+dp(i, time) =
+    max(
+        reward[i] + dp(i+1, time+1) if time < deadline[i],
+        dp(i+1, time)
+    )
+
+reward is plus, time is minus;
+that is we want to maximize reward while minimizing time -> Sort by reward or time
+
+Is T* >= All other T based only on reward or time? -> Yes. So this collapses to
+a greedy problem
+
+This is a mental model I've developed to identify greedy keys. Is there a way
+to decide the correct greedy key; that is if we consider sorting by reward vs 
+sorting by time, what should we choose?
+
+A.
+Sort by constraint, not by profit
+
+3️⃣ So How Do You Decide the Correct Greedy Key?
+🔍 Step 1: Identify the Resource That Constrains Feasibility
+Ask:
+
+What makes a solution infeasible?
+
+In knapsack → capacity
+In scheduling → deadlines
+In interval scheduling → finishing time
+In MST → cycles
+
+The greedy key must align with the constraint dimension, not the profit dimension.
+
+🔍 Step 2: Check Exchange Property
+
+Q.
+[My Interpretation]
+So the idea is sort by constraint that determines the feasibility then apply exchange
+property and see if there always is an optimal solution that includes the solution
+derived from sorting by constraint
+
+A.
+🚫 Why This(DP -> Greedy) Fails in Knapsack
+Try your rule:
+
+Sort by weight (constraint)
+Then exchange argument
+
+Fails because:
+
+Feasibility depends on sum of weights, not ordering.
+Swapping one item may break capacity in non-local ways.

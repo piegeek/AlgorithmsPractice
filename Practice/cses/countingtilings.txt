@@ -1,0 +1,16 @@
+Q.
+[Continue working on solution]
+
+Find why my solution undercounts, and tell me a general way to come up with a recurrence
+relation for these types of problems. The mental model I use is 1. First look at constraints
+and try to exclude types of results that can't be the answer and find a range for which
+we should try to find an answer for. 2. Set up a broad way to solve this problem. 3.
+Find out how to count by dividing into subproblems. 4. Try to divide the problem
+into subproblems such that they do not double count and do not miss any candidates
+
+Give me a more structured out mental model that builds upon my mental model so that 
+I may be able to solve any recurrence relation problem when I face them
+
+My code: ""
+
+Specifications: ""

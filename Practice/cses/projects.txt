@@ -1,0 +1,8 @@
+Q.
+Find out why my greedy solution produces an incorrect answer for this problem and 
+if this problem has to be solved with dp not greedy, tell me a way to improve my
+dp code so it doesn't TLE.
+
+My code: ""
+
+Specifications: ""

@@ -1,0 +1,9 @@
+Q.
+Tell me how to rewrite the basecase of dp() using bitmask traversal.
+
+My code: ""
+
+Q.
+Now find out why my reconstruct() is giving me an empty list. 
+
+My code: ""

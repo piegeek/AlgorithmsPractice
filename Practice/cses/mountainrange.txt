@@ -1,0 +1,6 @@
+Q. 문제이해 - 삼성 기출 중 로봇청소기와 비슷한 상황
+Why is my code giving incorrect results for the following problem?
+
+My code: ""
+
+Specifications: ""

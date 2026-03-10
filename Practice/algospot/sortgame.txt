@@ -1,0 +1,6 @@
+Q.
+Why dfs solution diverges here and only bfs solution works here.
+
+My code: ""
+
+Specifications: ""

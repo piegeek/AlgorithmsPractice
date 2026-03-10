@@ -1,3 +1,11 @@
+# Reconstruct
+# 0. Base case - [[]] or []
+# 1. Set current_val
+# 2. Compare current_val to next step
+# 3. suffixes = reconstruct(...)
+# 4. When appending answers be mindful of the order format of answer
+# 5. Be aware of typos  
+
 # Greedy - garden.py
 def reconstruct(idx, start, end, N, flowers, empty):
     if idx == N:

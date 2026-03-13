@@ -1,0 +1,20 @@
+Q.
+For this problem I've generated a dfs spanning tree for each node and added them to 
+a dfs forest (in my code I've incorrectly used the term MST & MSTs for dfs-spanning-tree
+and dfs-spanning-forest but forget about it for now)
+
+Then I've applied exhaustive search generating all permutations of spanning trees
+to find the minimum length added necessary. 
+
+However I feel like this can be optimized or solved better.
+First instead of generating the entire forest I think I could find the root nodes
+of each dfs-spanning-tree and manipulate them (I thought of union-find)
+instead of storing the entire forest.
+
+Also generating all permutations and merging them to find minimum solution seems 
+inefficient. Is there a better way? Or do I need to use a specific algorithm for
+this problem?
+
+My code: ""
+
+Specifications: ""

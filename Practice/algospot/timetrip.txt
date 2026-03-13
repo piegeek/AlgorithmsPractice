@@ -1,0 +1,18 @@
+Q.
+Here we have to check if there are positive cycles (if so then return INFINITY)
+negative cycles (if so return INFINITY) and connectivity
+
+Because of this I've separated getting connectivity and getting min/maximum distance
+into three different dfs functions. Is this the only way? And since this problem
+asks for maximum distance is using dfs the only way to get it? Since other optimized
+algorithms works for only minimum distance
+
+My code: ""
+
+Specifications: ""
+
+A.
+Two Issues (Two things to consider when detecting cycles through path !!)
+1. It detects cycles that cannot reach the destination (2 <-> 3 when objective is 0 -> 1)
+2. It computes incorrect cycle sums (0 -> A -> B -> A instead of A -> B -> A (starts
+from start))

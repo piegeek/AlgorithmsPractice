@@ -1,0 +1,5 @@
+Q.
+In this problem we keep track of the path we've visited and choose the max delay
+of a node. However, because we want to use DP... ;
+
+My sol -> Keep track of maximum node delay at each node

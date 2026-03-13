@@ -1,4 +1,5 @@
 import sys
+import heapq
 
 INF = 10 ** 9
 
@@ -9,16 +10,22 @@ def routing():
         solve_routing(N, M, adj_mat)
 
 def solve_routing(N, M, adj_mat):
-    visited = 0
+    # # DFS sol
+    # visited = 0
 
-    ret = INF
+    # ret = INF
 
-    for j in range(len(adj_mat[0])):
-        if adj_mat[0][j] >= 1:
-            visited |= (1 << j)
-            ret = min(ret, adj_mat[0][j] * dfs(j, visited, N, M, adj_mat))
-            visited &= ~(1 << j)
+    # for j in range(len(adj_mat[0])):
+    #     if adj_mat[0][j] >= 1:
+    #         visited |= (1 << j)
+    #         ret = min(ret, adj_mat[0][j] * dfs(j, visited, N, M, adj_mat))
+    #         visited &= ~(1 << j)
 
+    # print(ret)
+    # return ret
+
+    # Dijkstra sol
+    ret = dijkstra(0, N-1, N, M, adj_mat)
     print(ret)
     return ret
 
@@ -35,6 +42,33 @@ def dfs(last, visited, N, M, adj_mat):
             visited &= ~(1 << j)
 
     return ret
+
+def dijkstra(start, end, N, M, adj_mat):
+    queue = []
+    distances = [ INF for _ in range(N) ]
+
+    # Initialization
+    distances[start] = 1
+    heapq.heappush(queue, (1, start))
+
+    while len(queue) > 0:
+        dist, curr = heapq.heappop(queue)
+
+        # IMPORTANT !!!
+        if distances[curr] < dist:
+            continue
+
+        for j in range(N):
+            if adj_mat[curr][j] >= 1:
+                next_dist = dist * adj_mat[curr][j]
+
+                if distances[j] <= next_dist:
+                    continue
+            
+                distances[j] = next_dist
+                heapq.heappush(queue, (next_dist, j))
+
+    return distances[end]
 
 def parse_input():
     input = sys.stdin.readline

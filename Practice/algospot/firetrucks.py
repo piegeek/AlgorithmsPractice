@@ -37,32 +37,33 @@ def solve_firetrucks(V, E, n, m, adj_list, fires, stations):
     time_sum = 0
 
     for fire in fires:
-        distances = [ INF for _ in range(V) ]
-        distances[fire] = 0
-        dijkstra(fire, distances, adj_list, V, fires, stations)
+        ret = dijkstra(fire, adj_list, V, fires, stations)
 
         time_sum += ret
 
     print(time_sum)
     return time_sum
 
-def dijkstra(origin, distances, adj_list, V, fires, stations):
+def dijkstra(origin, adj_list, V, fires, stations):
     queue = []
-
-    for edge in adj_list[origin]:
-        b, t = edge
-        heapq.heappush(queue, (t, origin))
+    distances = [ INF for _ in range(V) ]
+    distances[origin] = 0
+    heapq.heappush(queue, (0, origin))
 
     while len(queue) > 0:
-        dist, prev = heapq.heappop(queue)
+        dist, curr = heapq.heappop(queue)
 
-        distances[node] = min(distances[node], dist + distances[prev])
+        if distances[curr] < dist:
+            continue
 
-        # for edge in adj_list[prev]:
-        #     b, t = edge
-        #     heapq.heappush(queue, ())
+        for v, d in adj_list[curr]:
+            next_dist = d + dist
+            
+            if distances[v] >= next_dist:
+                distances[v] = next_dist
+                heapq.heappush(queue, (next_dist, v))
 
-        pass
+    return min([distances[x] for x in stations])
         
 
 def dfs(last, visited, V, adj_list, fires, stations):

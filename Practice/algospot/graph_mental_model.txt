@@ -1,0 +1,46 @@
+When I think of graphs this is the mental model I have in my head
+
+1. Graph Traversal (The most broad type of graph problems)
+ - 1. Connectivity (Can be checked with dfs/bfs)
+ - 1-1. Shortest path (bfs for unweighted, dijkstra's for weighted)
+
+ - 2. Cycles (if component (found by dfs) contains V nodes and more that V edges,
+ the graph contains a cycle)
+ - 2-1. If there are V nodes and V - 1 edges it forms a tree. (There are two concepts
+ important in trees)
+ - 2-1-1. MST (Kruska's algorithm, Prim's algorithm but not that important, not 
+ essential topics; can be skipped for preparing coding interviews)
+ - 2-1-2. Union-Find (We can merge dfs spanning trees)
+
+ - 3. Bipartiteness: If any cycle contains odd number of edges it the component is not
+ bipartite
+
+2. Directed Graphs (Second main group of graph problems)
+The reason why directed graphs have significance is that any dp problem has a 1-1
+correspondence with a DAG, nodes represent states and edges represent transitions
+
+ - 1. Topological sort (There may be multiple topological sorts)
+ - 2. DP <=> DAG
+ - 3. Strongly connected components (If a graph can be grouped by SCC's the entire
+ can be reduced to a DAG, although this also doesn't feel like it's an essential
+ topic)
+
+My question I have came up when I was studying edge classification in dfs spanning 
+trees for undirectional and directional graphs. I feel like the classification of
+tree edges / (forward edges, backward edges, cross edges) could be useful for generalized
+solving methods of graph problems so what's you take on this?
+
+And also see if there are other "essential topics" I may add to the graph mental model
+I say "essential" because prim's and kruskal's algorithm or network flow algorithms
+or euler/hamiltonian circuit problems could have significance but feel less like the 
+essence of what graph problems are in generalized
+
+Also when solving minimum distance problems, I often use dfs + dp for problem solving
+even for undirected graphs but here it says dp and DAGs have 1-1 correspondence. Does
+that mean graph problems can be solved with dp but dp can only be modeled with DAGs?
+That's how I understood it
+
+Also see if having V nodes and > V edges is a valid condition for having a cycle in
+both undirectional and directional graphs and see if having V nodes and V-1 edges
+is a valid condition for the graph being a tree both in undirectional and directional
+graphs

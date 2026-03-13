@@ -1,0 +1,27 @@
+Q.
+In this problem I've solved it by separating checking if a endpoint can be reached,
+and the minimum distance to that endpoint.
+
+Is it possible to do this in one dfs call?
+
+My code: ""
+
+Specifications: ""
+
+A.
+Yes — both checks can be merged into a single DFS, because connectivity is just a 
+special case of shortest path.
+
+Your current logic:
+
+connected_dfs() → check if end reachable
+distance_dfs() → compute minimum distance
+
+But notice:
+
+If no path exists, the shortest distance is effectively ∞.
+If a path exists, the shortest distance will be finite.
+
+So one DFS that returns the minimum distance already tells you connectivity.
+
+Intended solution: Floyd-Warshall algorithm

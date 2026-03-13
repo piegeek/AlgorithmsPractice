@@ -16,6 +16,7 @@ def solve_drunken(V, E, delays, adj_list, T, queries):
 
         print(ret)
 
+# Add largest node delay parameter to dfs
 def dfs(start, end, visited, V, E, delays, adj_list, path):
     if start == end:
         return max([x[1] for x in path[1:-1]])

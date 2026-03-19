@@ -14,6 +14,7 @@ for this problem.
 My code: ""
 
 A.
+IMPORTANT!!!
 3️⃣ The clean time-step simulation template
 while simulation_running:
 
@@ -29,9 +30,9 @@ while simulation_running:
 7️⃣ Clean mental model for time-step simulations
 
 Whenever you write one, think in this exact order:
-What events can happen at this time?
-What priority order should they be processed?
-After all events are resolved, what advances automatically with time?
+What events can happen at this time? - Detect Events
+What priority order should they be processed? - Order of Transition
+After all events are resolved, what advances automatically with time? - Advance Time
 
 If you answer those explicitly in code blocks, your simulation becomes stable.
 

@@ -1,0 +1,10 @@
+Q.
+Find why my code TLE's. I feel like it's because I model each timestep by one,
+but we can jump between events without having to simulate every second.
+Tell me how to do that and give me a generalized code structure and mental model
+I can use when solving simulation problems where I can jump between timestamps based
+on when events come in.
+
+My code: ""
+
+Specifications: ""

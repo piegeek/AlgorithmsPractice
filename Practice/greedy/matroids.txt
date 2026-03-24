@@ -1,0 +1,151 @@
+Q.
+Since greedy solutions are equivalent to matroids, I want to build a mental model
+that finds the greedy solution by looking at structure of the problem and structuring
+the inputs into a matroid
+
+Generally, for (E, I) to be a matroid,
+1. empty set must be an element of I
+2. Inheritance property must hold (rather straightforward)
+3. Augmentation property must hold (If |A| > |B| then we can take element e from A \ B
+and add it to B and B will still be an element of I)
+
+Also, the general rule for solving greedy solutions according to a matroid inputs is like
+
+1. S = empty set
+2. For e of E such that S U {e} in I:
+3. find such element e_m of maximum weight
+4. S = S U {e_m}
+5. return S
+
+In this pseudocode I learned that steps 2, and 3 are problem specific.
+
+Thus for this problem (assignment solving), I want to know
+how to fill in the steps of the psuedocode above so that I get the same
+results when using a heap to solve this problem.
+
+My Code: ""
+
+Specifications: ""
+
+def is_independent(S, e):
+    candidate = S | {e}
+    for t in range(1, max_deadline + 1):
+        if sum(1 for a in candidate if a.deadline <= t) > t:
+            return False
+    return True
+
+Here, "candidate" is the augmented B. We check if it still is an element of I.
+Double for loops are expected since for a built up solution S, all its subsets
+have to be an element of I.
+
+Q.
+This is the insight i've obtained from looking at your code you generated.
+I feel like a double for loop is necessary, but I want to have a generalized
+way to come up with the for loop ranges and feasibility check conditions.
+
+A.
+The double loop in is_independent comes from something else entirely.
+
+for constraint in all_constraints:        # outer: enumerate what must hold
+    if measure(S, constraint) > bound:    # inner: measure S against that constraint
+        return False
+
+The Generalized Mental Model
+Question 1: What are the constraints?
+These become your outer loop.
+
+Question 2: For each constraint, what quantity must be bounded?
+This becomes your inner loop / measure.
+
+Q.
+Use the mental framework and psuedocode from above to solve this problem too.
+
+Specifications: ""
+
+A.
+This problem is identical in structure to the assignment problem.
+
+Q.
+Use the mental framework and psuedocode from above to solve this problem too. (Gem Thief)
+
+def is_independent(S, e):
+	S | {e}
+	# Constraint 1: Total K bags
+	if len(S) > K:
+		return False
+
+	# Constraint 2:
+	cant_put_in_bag = True
+	if is_valid_bagging(permutation(S)):
+		cant_put_in_bag = False
+		break
+
+	if cant_put_in_bag:
+		return False
+
+	return True
+
+This is the is_independent function I've come up with but I have to generate all
+permutations of S and check if its valid to check if S is a valid independent set
+Is this correct reasoning or am I missing something?
+
+Specifications: ""
+
+A.
+def is_independent(S, bags):
+	# Constraint 1
+    if len(S) > len(bags):
+        return False
+	
+	# Constraint 2
+    gems_sorted = sorted([m for m, v in S], reverse=True)
+    bags_sorted = sorted(bags, reverse=True)
+    return all(gems_sorted[i] <= bags_sorted[i] for i in range(len(S)))
+
+Q.
+Then can I assume that when it comes to constraint 
+matching in independence checks, when I feel
+like I have to generate all permutations, instead if I take the most optimal
+matching structure (by Hall's condition, whatever that is) that makes it okay?
+
+A.
+Yes
+Whenever your independence check feels like:
+for permutation in all_permutations(S):
+    if is_valid_assignment(permutation):
+        return True
+return False
+
+You can always replace it with Hall's condition
+
+Q. "atm.py"
+How do I use the matroid mental framework and pseudocode to solve this problem?
+Also what should the is_independent() function be like?
+
+Specifications: ""
+
+A.
+Matroid framework doesn't work here since there is no selection.
+
+The General Signal to Distinguish Them
+Ask: "Am I choosing what to include, or how to order everything?"
+
+Choosing what to include(subset) → try matroid framework
+Ordering everything(permutation) → try exchange argument (compare adjacent swaps)
+
+Q. "bulbsandswitches.py"
+How do I use the matroid mental framework and pseudocode to solve this problem?
+Also what should the is_independent() function be like?
+
+Specifications: ""
+
+A.
+The problem asks for minimum presses to reach a target state, 
+which is a feasibility + counting problem, not an optimization over weights.
+
+The Three Frameworks So Far
+
+1. subset, maximize weight -> Matroid + greedy
+2. permutation -> Exchange argument
+3. Greedy simulation with forced choices
+

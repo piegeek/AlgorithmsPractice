@@ -1,3 +1,4 @@
+# BOJ 1202
 import sys
 import heapq
 

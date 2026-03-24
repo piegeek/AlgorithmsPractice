@@ -1,3 +1,4 @@
+# BOJ 11000
 import sys
 
 def classroomallocation():

@@ -1,3 +1,4 @@
+# BOJ 1781
 import sys
 import heapq
 

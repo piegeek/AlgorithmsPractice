@@ -1,0 +1,54 @@
+Q.
+I'm having runtime errors and TLE for this code. I know that this problem should use
+a greedy approach but tell me how to fix runtime error issue while keeping the code.
+Also tell me while deciding to skip in n_choose_k, why we should check for
+"if n - idx + chosen - 1 >= k:" instead of just "if n - idx + chosen >= k:".
+Tell me a clear way to decide these off by one issues. Give me a mental model I can
+use.
+
+A.
+My original code was correct; 1 should not be subtracted
+
+Q.
+Matroid greedy
+
+A.
+🔥 The deep reason it’s not a matroid
+
+Matroid greedy assumes:
+Once you pick an element, it’s never optimal to remove it
+
+Q.
+Then can problems be divided into 1. Matroid problems where once a element is chosen,
+it's never optimal to remove it, and 2. Greedily choose elements while maintaining a 
+prefix by a data structure (stack or heap) and remove elements if a better candidate
+appears. Can all problems be categorized this way? And if not, why? I feel like it's
+a encompassing framework.
+
+A.
+Greedy is not one unified structure like DP or graphs.
+
+Instead:
+Greedy works when a problem-specific exchange argument exists
+Matroid is just the cleanest, most general case of that.
+
+🎯 A better mental framework
+1. Matroid greedy (global optimality)
+Pick best element
+Never undo
+
+2. Prefix / monotonic greedy
+Maintain best prefix
+Undo bad choices (stack)
+
+3. Ordering greedy (sorting-based)
+Sort + sweep
+Example: interval scheduling
+
+4. Merge greedy
+Combine smallest/largest repeatedly
+Example: Huffman
+
+5. Shortest-path greedy
+Expand best frontier
+Example: Dijkstra

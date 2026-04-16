@@ -1,0 +1,91 @@
+Q.
+I'm having incorrect results for some test cases < 20% for this code.
+What should be the issue?
+
+Q.
+I'm trying to fit this problem into the greedy mental framework I've built up.
+This problem seems to be a prefix greedy since we're listing out the
+sequence of joystick manipulations (up, down, left, right). We're creating a sequence
+of manipulations with duplicates allowed so this seems like a exploration dp with
+duplicates (i.e. brute force) but this problem is known to be able to be solved
+with greedy. What is the greedy strategy and how does it map to 1. exploration dp
+and 2. Prefix greedy category of greedy mental framework we've made
+
+Greedy Framework: ""
+
+Specifications: ""
+
+My code: ""
+
+A.
+❌ Not prefix greedy
+
+Because:
+No monotonic “build and fix” process
+No stack / undo pattern
+
+Q.
+I feel like BOJ 2138 problem is similar because it shares a similar operation until
+state reaches some goal structure. This also is a greedy problem, so give me a general
+solution to this problem as well as the joystick problem and a mental model I can 
+add to the framework.
+
+BOJ 2138: ""
+
+A.
+
+BOJ 2138 (bulbsandswitches.py)
+🔑 Key observation (this is everything)
+
+The decision at position i is forced by position i-1.
+
+Why?
+Only switch i can fix bulb i-1 (after you've passed it)
+Once you move past i-1, you can never touch it again
+
+--------------------------
+🧠 Now connect to Joystick
+
+Joystick
+exponential paths
+reduced to:
+O(N) turning strategies
+
+BOJ 2138
+exponential press combinations
+reduced to:
+2 strategies
+
+🎯 The common structure
+Both problems have:
+
+1. Local operations
+joystick: move / change letter
+2138: press switch
+
+2. Global goal state
+
+3. Naive state = exponential
+
+BUT:
+
+4. Strong structural constraint
+
+Template
+1. Choose initial condition(s) (small branching: 2~4 cases)
+2. Sweep in one direction
+3. At position i:
+     if previous constraint violated:
+         forced action
+4. Validate at end
+
+Q.
+Use this template and generate code that solves this joystick problem and
+match it with this template
+
+Template: ""
+
+--------
+
+LGENS
+Sweep in one direction and force action if constraint violated

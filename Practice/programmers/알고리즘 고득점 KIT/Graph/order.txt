@@ -1,0 +1,10 @@
+💡 Key Insight (This is the takeaway)
+This problem is NOT:
+“degree-based ranking” ❌
+
+It IS:
+“can we determine ordering via transitive comparisons?” ✅
+
+🎯 One-line Summary
+Your code fails because it only considers direct match counts, 
+while the problem requires global ordering via transitive reachability.

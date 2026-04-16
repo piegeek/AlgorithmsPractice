@@ -1,0 +1,23 @@
+🎯 A better mental framework
+1. Matroid greedy (global optimality)
+Pick best element
+Never undo
+
+2. Prefix / monotonic greedy
+Maintain best prefix
+Undo bad choices (stack)
+
+3. Ordering greedy (sorting-based)
+Sort + sweep
+Example: interval scheduling
+
+4. Merge greedy
+Combine smallest/largest repeatedly
+Example: Huffman
+
+5. Shortest-path greedy
+Expand best frontier
+Example: Dijkstra
+
+6. LGENS
+local op, global goal, exponential naive state, structural constraint

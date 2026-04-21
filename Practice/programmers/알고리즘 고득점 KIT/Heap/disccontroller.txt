@@ -1,0 +1,24 @@
+Q.
+Find why my code TLE'S
+
+My code: ""
+
+Specifications: ""
+
+A.
+1. 
+Push all processes that arrived until time t
+
+2. (Time jump logic)
+If run_queue is not empty,
+calculate remaining
+t += remaining
+process_t += remaining
+
+3. If job_idx < n,
+t = jobs[job_idx][0]
+
+Q.
+I followed your suggestion but now my code fails testcases. What's the issue?
+
+My code: ""

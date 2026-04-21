@@ -1,2 +1,27 @@
 Q.
 I'm getting incorrect results for this code. Tell me what's the issue.
+
+My code: ""
+
+Specifications: ""
+
+Q.
+Why should it be sorted by endtime?
+
+Q.
+Greedy feels less straightforward
+
+A.
+When stuck → try:
+sort by start?
+sort by end?
+pick smallest/largest?
+maintain heap?
+
+After solving these, you’ll start noticing:
+
+“sort by end” appears everywhere
+“use heap when decision is dynamic”
+“use stack when undoing bad choices”
+
+That’s when greedy stops being memorization and becomes pattern recognition.

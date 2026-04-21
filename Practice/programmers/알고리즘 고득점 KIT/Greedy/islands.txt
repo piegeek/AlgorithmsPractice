@@ -1,0 +1,14 @@
+Q.
+This is the code I wrote for this problem which basically is a kruskal's algorithm
+problem. My code doesn't skip at is_independent() so I feel like there's an issue
+there. I tried to use the matroid greedy pseudocode from before, so use that template
+
+My code: ""
+
+Matroid template: ""
+
+Specifications: ""
+
+A.
+We only need to check at the very edge of adding of edges; we don't have to revalidate
+all the vertices that were added earlier

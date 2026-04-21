@@ -3,13 +3,40 @@
 Pick best element
 Never undo
 
+S = []
+for e in E:
+	cand = S + [e]
+	if is_independent(cand):
+		S = cand
+
+return S
+
 2. Prefix / monotonic greedy
 Maintain best prefix
 Undo bad choices (stack)
 
+queue = []
+
+for item in lst:
+	queue.append(item)
+
+	while queue_full_or_subpar():
+		queue.pop()
+
+return queue
+
 3. Ordering greedy (sorting-based)
 Sort + sweep
 Example: interval scheduling
+
+lst = sorted(lst, key = lambda x : x[k])
+
+for start, end in lst:
+	if start > camera:
+		camera = end
+		ret += 1
+
+return ret
 
 4. Merge greedy
 Combine smallest/largest repeatedly
@@ -19,5 +46,11 @@ Example: Huffman
 Expand best frontier
 Example: Dijkstra
 
-6. LGENS
+6. Local operation, Global goal
 local op, global goal, exponential naive state, structural constraint
+
+# Sweep in one direction
+for i in range(n):
+	if prev_constraint(state) == False:
+		force_action(state)
+

@@ -1,0 +1,25 @@
+Q.
+In this code, I've used the matroid pseudocode to solve this problem greedily.
+
+However in some test cases 8/60 it gives me a wrong answer most being off-by-one.
+
+What's the issue?
+
+My Code: ""
+
+Specifications: ""
+
+A.
+Your instinct about:
+“matroid vs prefix-removal (stack/heap) greedy”
+is strong—but this problem highlights a key gap:
+
+Even if a problem looks like a matroid, 
+choosing the wrong “weight” breaks greedy optimality.
+
+It minimizes “future blocking”:
+
+Short interval ≠ less blocking
+Early finishing interval = maximum room for future intervals
+
+That’s the real invariant.

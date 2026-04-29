@@ -1,0 +1,44 @@
+Q.
+I feel like greedy problems build up a solution from an empty list
+
+Just as dp problems could be divided into cases of exploration dp (find permutations)
+and decision dp (find subset)
+
+It seems like Greedy solutions follow a similar pattern. 
+
+In greedy problems where we check whether an item at an index should be included in
+the greedy solution (similar to decision dp), these problems are mostly matroid
+style greedy problems where we sort by a criterion then add them to a list.
+
+In greedy problems where permutation matters is the more general case and tricky case.
+Here, data structures could be used to hold the optimal solution until a certain point
+and kick out data when it violates our greedy property.
+
+In this task scheduler problem, this is also a simple exploration dp problem if we 
+go about that way, but since we're practicing greedy solutions, I want to know
+a clear mental model and a generalizable way
+for building up a solution even in exploration type (where permutation
+matters) greedy problems. 
+
+Specifications: ""
+
+A.
+
+A reusable template for “permutation greedy”
+
+1. Identify the constraint (cooldown, adjacency, overlap, etc.)
+
+2. Ask:
+   “Which element becomes hardest to place later if I delay it?”
+
+3. Define priority: !!
+   → Most constrained / most frequent / earliest deadline
+
+4. Use a data structure: !!
+   → Heap / queue / sorted structure
+
+5. Simulate step-by-step:
+   → Always pick best candidate NOW
+
+6. Maintain feasibility: !!
+   → cooldown queue, visited set, etc.

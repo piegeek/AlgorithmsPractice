@@ -1,0 +1,12 @@
+Q.
+Find why my code gives incorrect results for ~10% of test cases.
+
+My Code: ""
+
+Specifications: ""
+
+A.
+You only pop when:
+
+c < stack[-1] → improves lexicographic order
+last[stack[-1]] > i → safe to remove (it comes back later)

@@ -1,0 +1,31 @@
+Q.
+I tried solving this problem greedily by choosing the index with the maximum
+allowed step size. However for < 1% of test cases this doesn't work and seems
+like I chose the wrong greedy key.
+
+This seems like a local choice, global goal problem we've seen earlier. The template
+to use in such cases was
+
+Template
+1. Choose initial condition(s) (small branching: 2~4 cases)
+2. Sweep in one direction
+3. At position i:
+     if previous constraint violated:
+         forced action
+4. Validate at end
+
+Using this template, how do I correctly solve this problem by choosing the right 
+greedy key? 
+
+My Code: ""
+
+Specifications: ""
+
+A.
+✅ Correct greedy key
+
+Instead of:
+maximize nums[i]
+
+You should:
+maximize reach = i + nums[i]

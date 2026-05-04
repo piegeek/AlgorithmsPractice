@@ -42,3 +42,15 @@ A reusable template for “permutation greedy”
 
 6. Maintain feasibility: !!
    → cooldown queue, visited set, etc.
+
+Q.
+Solve this problem using a heap only (without using a deque) and structure the code 
+into following the reusable template for "permuatation greedy"
+
+Make minimal modifications to my code so that it solves the problem without errors.
+
+Permuatation greedy template: ""
+
+My code: ""
+
+Specifications: ""

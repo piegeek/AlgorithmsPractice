@@ -1,0 +1,15 @@
+Q.
+My code TLE's for < 10% of the test cases.
+Find what's the reason and how to improve my code so that it passes all the testcases
+
+I've tried using the local operation global goal template we've developed earlier.
+
+1. Sweep from left to right
+2. If prev feasibility is broken force action
+
+However this results in TLE. Is there a way to use this template while improving its
+performance?
+
+My code: ""
+
+Specifications: ""

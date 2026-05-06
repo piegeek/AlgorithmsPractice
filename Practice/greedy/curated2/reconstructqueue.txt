@@ -1,0 +1,49 @@
+Q.
+This problem is permutation greedy. We have to build up a ordering.
+
+So the way I go about this is the following template.
+
+[Template]
+
+1. Find the constraint: Here it's anyone standing before must be greater than equal to h,
+and the number of this should be k
+
+2. Find what shouldn't be delayed: Most constrained? Most frequent? Earliest deadline?
+Here, it seems that items with small height and small k should not be delayed, so
+this seems to be the greedy key
+
+3. Use a data structure
+Since we're going to choose the smallest (h, k), Let's use a heap.
+
+4. Check feasibility
+The number of people that come before people[i] that have h >= h[i] must be k[i].
+If this feasibility is met, we add it to the solution list, S. If not, we put it 
+in a cooldown queue (used this to prevent picking the same item over and over again
+in heap push/pop). However this strategy is too strict. I've put comments about this
+in the code. Refer to that
+
+So steps 1-4 is the way I've tried to solve this problem, but my cooldown queue strategy
+is too strict and using a queue only has a problem of picking the same item over and over
+again. What should I do to correctly solve this problem, while following the template
+I've given you as above?
+
+My code: ""
+
+Specifications: ""
+
+Q.
+I still want to solve it by using the greedy key of small h, small k,
+because in an example testcase, 
+
+Input: people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]
+Output: [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]
+
+It seems like it should be sorted by (h, k)
+
+Is there a way to solve this problem using a queue? Even though this may be relatively
+inefficient and a roundabout way?
+
+A.
+⚠️ You cannot reliably construct the queue left → right using (small h, small k)
+without effectively re-deriving the correct strategy 
+(or doing backtracking / O(n³) checks).

@@ -1,0 +1,7 @@
+Your DP is therefore enforcing:
+
+"Only serve pancakes that are already perfect or overcooked."
+
+But the problem statement allows serving any pancake at any time.
+
+In fact, the optimal solution for this testcase requires repeatedly serving undercooked pancakes.
